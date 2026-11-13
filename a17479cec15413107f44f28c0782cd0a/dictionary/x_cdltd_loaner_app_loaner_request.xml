@@ -12,6 +12,7 @@
                 <element inactive_on_update="false" label="Buenos Aires" sequence="2" value="ba"/>
             </choice>
         </element>
+        <element label="pick up reminder" max_length="255" name="pick_up_reminder" type="glide_date_time"/>
         <element choice="1" default="cmdb_ci_computer" label="Item type" max_length="255" name="item_type" type="choice">
             <choice>
                 <element inactive_on_update="false" label="Laptop" sequence="0" value="cmdb_ci_computer"/>

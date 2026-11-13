@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>x_cdltd_loaner_app_loaner_request_script_1</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[if (current.item_type == "cmdb_ci_computer") {
+        var request = new sn_ws.RESTMessageV2();
+        request.setEndpoint('https://nowlearning-nlinst04826384-1vzeb-0001.lab.service-now.com/api/now/table/x_cdltd_loaner_app_password_vault?sysparm_query=asset%3D'+current.cmdb_ci.asset_tag+'&sysparm_fields=password&sysparm_limit=1');
+        request.setHttpMethod('GET');
+        //Eg. UserName="admin", Password="admin" for this code sample.
+        var user = 'admin';
+        var password = '8tEmvBXBxEJf';
+        request.setBasicAuth(user, password);
+        request.setRequestHeader("Accept", "application/json");
+        var response = request.execute();
+        
+        var obj = JSON.parse(response.getBody());
+        var myPass = obj.result[0].password;
+        template.print('u_password: ' + myPass);
+    }]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-11-12 12:19:05</sys_created_on>
+        <sys_id>39b47c454ce813107f449c58a9e568be</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>x_cdltd_loaner_app_loaner_request_script_1</sys_name>
+        <sys_package display_value="Loaner App" source="x_cdltd_loaner_app">a17479cec15413107f44f28c0782cd0a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner App">a17479cec15413107f44f28c0782cd0a</sys_scope>
+        <sys_update_name>sys_script_email_39b47c454ce813107f449c58a9e568be</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-11-12 12:27:54</sys_updated_on>
+    </sys_script_email>
+</record_update>
